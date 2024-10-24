@@ -15,7 +15,7 @@ export class Pokemon {
     }
 
     takeDamage(damage) {
-        this.health = Math.max(0, this.health - damage); // Не допускаем значений ниже 0
+        this.health = Math.max(0, this.health - damage);
         this.updateHealth();
     }
 }
