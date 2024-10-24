@@ -1,9 +1,9 @@
-// main.js
+
+
 import { Pokemon } from './Pokemon.js';
 import { logAction } from './log.js';
 import { resetGame } from './reset.js';
 
-// Селекторы элементов на странице
 const btnKick = document.getElementById('btn-kick');
 const btnRandomAttack = document.getElementById('btn-random-attack');
 const progressbarCharacter = document.getElementById('progressbar-character');
@@ -14,7 +14,6 @@ const progressbarBlastoise = document.getElementById('progressbar-blastoise');
 const healthBlastoise = document.getElementById('health-blastoise');
 const logContainer = document.getElementById('logs');
 
-// Логи боя
 const logs = [
     '[ПЕРСОНАЖ №1] згадав щось важливе, але несподівано [ПЕРСОНАЖ №2] вдарив у передпліччя ворога.',
     '[ПЕРСОНАЖ №1] поперхнувся, і за це [ПЕРСОНАЖ №2] з переляку приклав прямий удар коліном у лоб ворога.',
@@ -28,12 +27,10 @@ const logs = [
     '[ПЕРСОНАЖ №1] намагався щось сказати, але [ПЕРСОНАЖ №2] розбив брову супернику.'
 ];
 
-// Создаем объекты для игрока и врагов
 const character = new Pokemon('Игрок', healthCharacter, progressbarCharacter);
 const enemy = new Pokemon('Charmander', healthEnemy, progressbarEnemy);
 const blastoise = new Pokemon('Blastoise', healthBlastoise, progressbarBlastoise);
 
-// Функция для атаки на Charmander и Blastoise
 function attackBothEnemies() {
     const damageToEnemy = Math.floor(Math.random() * 20) + 5;
     const damageToBlastoise = Math.floor(Math.random() * 20) + 5;
@@ -47,7 +44,6 @@ function attackBothEnemies() {
     checkVictory(blastoise.health, 'Вы победили Blastoise!');
 }
 
-// Функция для случайной атаки
 function randomAttack() {
     const damage = Math.floor(Math.random() * 15) + 5;
     const target = Math.random() < 0.5 ? enemy : blastoise;
@@ -57,7 +53,6 @@ function randomAttack() {
     checkVictory(target.health, `Вы победили ${target.name}!`);
 }
 
-// Проверка на победу
 function checkVictory(health, message) {
     if (health <= 0) {
         alert(message);
@@ -65,7 +60,6 @@ function checkVictory(health, message) {
     }
 }
 
-// Счетчик кликов
 function setupClickCounter(button, limit) {
     let count = 0;
 
@@ -88,7 +82,6 @@ function setupClickCounter(button, limit) {
     return { handleClick, reset };
 }
 
-// Обработчики событий на кнопки
 const kickHandler = setupClickCounter(btnKick, 6);
 btnKick.addEventListener('click', function() {
     kickHandler.handleClick();
@@ -101,7 +94,6 @@ btnRandomAttack.addEventListener('click', function() {
     randomAttack();
 });
 
-// Сброс счетчиков кликов
 function resetClickCounters() {
     kickHandler.reset();
     randomAttackHandler.reset();
