@@ -11,8 +11,8 @@ export function resetGame(character, enemy, blastoise, logContainer, resetClickC
         character.updateHealth();
         enemy.updateHealth();
         blastoise.updateHealth();
-        resetClickCounters(); // Сбрасываем счетчики кликов
+        resetClickCounters();
         alert('Игра сброшена! Начните новый бой!');
-        logContainer.innerHTML = ''; // Очищаем лог
+        logContainer.innerHTML = '';
     }, 2000);
 }
